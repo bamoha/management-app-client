@@ -1,0 +1,35 @@
+<div class="app app-default">
+
+  <div class="app-container app-login">
+    <div class="flex-center">
+      <div class="app-header"></div>
+      <div class="app-body">
+        <div class="app-block">
+        <div class="app-form">
+          <div class="form-header">
+            <div ><img src="../../assets/images/FlexiSAF-New-Logo-alt.svg" class="app-brand" alt=""></div>
+          </div>
+          <form (ngSubmit)="onSubmit(f)" #f=ngForm validate>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                  <i class="fa fa-user" aria-hidden="true"></i></span>
+                <input type="email" ngModel name="email" class="form-control" placeholder="Admin Email" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2">
+                  <i class="fa fa-key" aria-hidden="true"></i></span>
+                <input type="text" name="password" ngModel class="form-control" placeholder="Password" aria-describedby="basic-addon2">
+              </div>
+              <div class="text-center">
+                  <a><button type="submit" class="btn btn-success btn-submit"> Login <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin" style="font-size:20px; float: right;"></i></button></a>
+              </div>
+          </form>
+        </div>
+        </div>
+      </div>
+      <div class="app-footer">
+      </div>
+    </div>
+  </div>
+  
+    </div>

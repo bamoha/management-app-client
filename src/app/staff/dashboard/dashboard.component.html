@@ -1,0 +1,86 @@
+
+<div class="app app-default">
+
+  <aside class="app-sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a class="sidebar-brand" href="#"><img class="app-brand" src="../../../assets/images/FlexiSAF-New-Logo-text-only-01-01.svg" alt=""></a>
+      <button type="button" class="sidebar-toggle">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div class="sidebar-menu">
+      <ul class="sidebar-nav">
+        <li class="active">
+          <a routerLink="/staffs">
+            <div class="icon">
+              <i class="fa fa-tasks" aria-hidden="true"></i>
+            </div>
+            <div class="title">Dashboard</div>
+          </a>
+        </li>
+        <li class="@@menu.messaging">
+          <a routerLink="/staffs/add-staff">
+            <div class="icon">
+              <i class="fa fa-users" aria-hidden="true"></i>
+            </div>
+            <div class="title">Add a staff</div>
+          </a>
+        </li>
+        <li class="@@menu.messaging">
+          <a routerLink="/staffs/settings">
+            <div class="icon">
+              <i class="fa fa-cogs" aria-hidden="true"></i>
+            </div>
+            <div class="title">Admin Settings</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  
+  <div class="app-container">
+  
+    <nav class="navbar navbar-default" id="navbar">
+      <div class="container-fluid">
+        <div class="navbar-collapse collapse in">
+          <ul class="nav navbar-nav navbar-mobile">
+            <li>
+              <button type="button" class="sidebar-toggle">
+                <i class="fa fa-bars"></i>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="navbar-toggle">
+                <img class="profile-img" src="./assets/images/profile.png">
+              </button>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="navbar-title">Dashboard</li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown profile">
+              <a class="logout-button" (click)="onLogout()">
+                  Logout
+                </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+  
+  <router-outlet></router-outlet>
+  
+    <footer class="app-footer"> 
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="footer-copyright">
+          Copyright © 2018 Flexisaf,Ltd.
+        </div>
+      </div>
+    </div>
+  </footer>
+  </div>
+  
+    </div>

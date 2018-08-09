@@ -23,9 +23,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/vendor.css",
+              "src/assets/css/flat-admin.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/vendor.js",
+              "src/assets/js/app.js"
+            ]
           },
           "configurations": {
             "production": {

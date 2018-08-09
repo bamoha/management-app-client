@@ -1,0 +1,145 @@
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card card-tab">
+        <div class="card-header">
+          <ul class="nav nav-tabs">
+            <li role="tab1" class="active">
+              <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">All Staff</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body no-padding tab-content">
+          <div role="tabpanel" class="tab-pane active" id="tab1">
+            <div class="card-body no-padding" role="tabpanel" id="tab1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-search hidden-sm">
+                      <input  [(ngModel)]="searchString" class="search form-control" id="search" type="text" placeholder="Search By Name">
+                    </li>
+                  </ul>
+              <table class="datatable table table-striped primary" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+                <th width="4%">S/N</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Company Email</th>
+                <th>Start date</th>
+                <th>Position</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="pointer" *ngFor="let staff of staffs | filter : 'name' : searchString; let i = index" (click)="checkDetails( staff._id)" data-toggle="modal" data-target="#myModal">
+              <td>{{i + 1}}</td>
+              <td>{{staff.name}}</td>
+              <td>{{staff.phone}}</td>
+              <td>{{staff.email}}</td>
+              <td>{{staff.startDate}}</td>
+              <td>{{staff.position}}</td>
+            </tr>
+          </tbody>
+          </table>
+            </div>
+            <i *ngIf="!staffs" class="fa fa-circle-o-notch fa-spin" style="font-size:24px; text-align: center;
+            margin: 20px 500px;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Staff Details</h4>
+          <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal2" >Edit Details</button>
+          <button type="button" class="btn btn-sm btn-danger pull-right" data-dismiss="modal" aria-label="Close" (click)="deleteStaff(singleStaff._id)">Delete</button>
+        </div>
+        <div class="modal-body">
+            <i *ngIf="!singleStaff" class="fa fa-circle-o-notch fa-spin" style="font-size:24px; text-align: center;
+            margin: 20px 250px;"></i>
+            <div class="media media-edit" *ngIf="singleStaff" >
+                <div class="media-left">
+                  <a href="#">
+                    <img src="http://placehold.it/100x100" />
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">{{singleStaff.name}}</h4>
+                  <p>{{singleStaff.description}}</p>
+                </div>
+              </div>
+              <div class="row" *ngIf="singleStaff && !singleStaffUpdate">
+                  <div class="col-md-12">
+                    <ul class="list-group">
+                      <li class="list-group-item"><span class="col-md-4">Position:</span>{{singleStaff.position}} </li>
+                      <li class="list-group-item"><span class="col-md-4">Department:</span>{{singleStaff.department}} </li>
+                      <li class="list-group-item"><span class="col-md-4">Address:</span>{{singleStaff.address}} </li>
+                      <li class="list-group-item"><span class="col-md-4">Email:</span>{{singleStaff.email}} </li>
+                      <li class="list-group-item"><span class="col-md-4">Phone:</span>{{singleStaff.phone}} </li>
+                      <li class="list-group-item"><span class="col-md-4">Employment:</span>{{singleStaff.type}} </li>
+                      <li class="list-group-item"><span class="col-md-4">Start Date:</span>{{singleStaff.startDate}} </li>
+                    </ul>
+                  </div>
+                </div>
+
+
+                
+        </div>
+        <div class="modal-footer">
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Edit Staff Details</h4>
+          </div>
+          <div class="modal-body">
+              <form validate>
+                  <div class="input-group">
+                    <input type="email" [(ngModel)]="name" name="name" class="form-control" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group">
+                      <input type="file" [(ngModel)]="image" name="image" class="form-control" aria-describedby="basic-addon2">
+                    </div>
+                  <div class="input-group">
+                    <input type="text" [(ngModel)]="phone" name="phone" class="form-control" aria-describedby="basic-addon2">
+                  </div>
+                  <div class="input-group">
+                      <input type="text" [(ngModel)]="email" name="email" class="form-control" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group">
+                      <input type="text" [(ngModel)]="startDate" name="startDate" class="form-control" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group">
+                      <input type="text" [(ngModel)]="position" name="position" class="form-control" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" [(ngModel)]="department" name="department" class="form-control" aria-describedby="basic-addon2">
+                      </div>
+                      <div class="input-group">
+                          <input type="text" [(ngModel)]="address" name="address" class="form-control" aria-describedby="basic-addon2">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" [(ngModel)]="type" name="type" class="form-control" aria-describedby="basic-addon2">
+                          </div>
+                          <div class="input-group">
+                              <textarea [(ngModel)]="description" name="description" class="form-control" aria-describedby="basic-addon2"></textarea>
+                            </div>
+                  <div class="text-center">
+                      <a><button type="submit" data-dismiss="modal" aria-label="Close" (click)="onSubmit()" class="btn btn-success btn-submit"> Edit Details <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin" style="font-size:20px; float: right;"></i></button></a>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>

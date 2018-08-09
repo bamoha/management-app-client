@@ -1,0 +1,61 @@
+
+    <div class="col-sm-12 col-xs-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="section">
+            <div class="section-title">Admin Settings</div>
+            <div class="section-body">
+              <div role="tabpanel">
+    <!-- Tab panes -->
+    <div class="row">
+        <div class="col-md-8" >
+          <table class="datatable table table-striped primary" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                  <th width="4%">S/N</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let admin of admins; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{admin.name}}</td>
+                <td>{{admin.email}}</td>
+                <td><a (click)="onDelete(admin._id)" *ngIf="admins.length != 1"><button type="submit" class="btn btn-danger btn-sm">Delete</button></a></td>
+              </tr>
+            </tbody>
+            </table>
+            <i *ngIf="!admins" class="fa fa-circle-o-notch fa-spin" style="font-size:20px; margin: 0 300px;"></i>
+          </div>
+         
+        <div class="col-md-4">
+          <form (ngSubmit)="onSubmit(f)" #f=ngForm validate>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <i class="fa fa-user" aria-hidden="true"></i></span>
+              <input type="text" ngModel name="name" class="form-control" placeholder="Admin name" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <i class="fa fa-envelope" aria-hidden="true"></i></span>
+              <input type="email" ngModel name="email" class="form-control" placeholder="Admin Email" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon2">
+                <i class="fa fa-key" aria-hidden="true"></i></span>
+              <input type="text" name="password" ngModel class="form-control" placeholder="Password" aria-describedby="basic-addon2">
+            </div>
+            <div class="text-center">
+                <a><button type="submit" class="btn btn-success btn-submit"> Add admin <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin" style="font-size:20px; float: right;"></i></button></a>
+            </div>
+        </form>
+        </div>
+      </div>
+        </div>
+</div>
+            </div>
+          </div>
+      </div>
+    </div>
